@@ -1,65 +1,51 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
-public  class AddressBook {
-    Scanner sc=new Scanner(System.in);
-    static ContactInfo[] contactList=new ContactInfo[15];
-    int add(int increment)
-    {
-        System.out.println("Enter First Name:");
-        String fn=sc.next();
-        System.out.println("Enter last name:");
-        String ln=sc.next();
-        System.out.println("Enter Address:");
-        String add=sc.next();
-        System.out.println("Enter City:");
-        String city=sc.next();
-        System.out.println("Enter State:");
-        String state=sc.next();
-        System.out.println("Enter postal_code:");
-        String zip=sc.next();
-        System.out.println("Enter Country-code");
-        String country=sc.next();
-        System.out.println("Enter contact number:");
-        String mob=sc.next();
-        System.out.println("Enter email :");
-        String mail=sc.next();
-        contactList[increment++]=new  ContactInfo(fn, ln, add, city, state,zip,country,mob,mail);
-        return increment;
-    }
-    void Edit(int increment)
-    {
-        int flag;
-        for(flag=0;flag<10;flag++)
-        {
-            if(flag==increment)
-            {
 
-                System.out.println("Enter First Name:");
-                String fn=sc.next();
-                System.out.println("Enter last name:");
-                String ln=sc.next();
-                System.out.println("Enter Address:");
-                String add=sc.next();
-                System.out.println("Enter City:");
-                String city=sc.next();
-                System.out.println("Enter State:");
-                String state=sc.next();
-                System.out.println("Enter postal_code:");
-                String zip=sc.next();
-                System.out.println("Enter Country:");
-                String country=sc.next();
-                System.out.println("Enter contact number:");
-                String mob=sc.next();
-                System.out.println("Enter email :");
-                String mail=sc.next();
-                contactList[increment++]=new  ContactInfo(fn, ln, add, city, state,zip,country,mob,mail);
-                break;
-            }
+public class AddressBook {
+    static List listing = new ArrayList();
+    public static Scanner sc = new Scanner(System.in);
+    static AddressBook addressBook = new AddressBook();
+    static  final int i=0;
+    public void addContact() {
+        System.out.println("Enter how many persons you want to add");
+        int numOfPerson=sc.nextInt();
+        for(int i=0; i<=numOfPerson; i++)
+        {
+            System.out.println("\nPerson :  "+i+" Enter First Name");
+            String fn= sc.next();
+            sc.nextLine();
+            System.out.println("Person : " +i+ " Enter Last Name");
+            String ln = sc.next();
+            sc.nextLine();
+            System.out.println("Person : " +i+ " Enter Address");
+            String add = sc.next();
+            sc.nextLine();
+            System.out.println("Person : " +i+ " Enter City");
+            String city = sc.nextLine();
+            System.out.println("Person : " +i+ " Enter State");
+            String state = sc.next();
+            sc.nextLine();
+            System.out.println("Person : " +i+ " Enter postal_Code");
+            String zip = sc.next();
+            System.out.println("Person : " +i+ " Enter Country_Name");
+            String country = sc.next();
+            System.out.println("person :" +i+ "Enter Mobile number");
+            String mob=sc.next();
+            System.out.println("Person : " +i+ " Enter E-mail");
+            String mail = sc.next();
+            ContactInfo contact = new ContactInfo(fn, ln, add, city, state, zip,country,mob, mail);
+            listing.add(contact);
+
         }
-        System.out.println("Your changes replicated to the Book manager successfully....");
+
     }
-    public static void main(String args[]){
-        Scanner sc=new Scanner(System.in);
-        AddressBook ab=new AddressBook();
-        ab.Edit(0);
+
+    public static void main(String args[]) {
+
+        addressBook.addContact();
+        System.out.println("--------The person records are listed below:--------\n");
+        System.out.println(listing);
+        System.out.println("\n contacts added sccessfully");
     }
 }
